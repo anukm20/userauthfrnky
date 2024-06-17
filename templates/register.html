@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row w-50 d-flex justify-content-center align-items-center ">
+        <div class="col-5">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="container">
+                    <h1>Register form</h1>
+                    <hr class="w-75">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" id="first_name" placeholder="Enter First Name" name="first_name" required>
+
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" id="last_name" placeholder="Enter Last Name" name="last_name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter Email" name="email" required>
+
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" placeholder="Enter Username" name="username" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Enter Password" name="password" required>
+
+                    <label for="cpassword">Confirm Password:</label>
+                    <input type="password" id="cpassword" placeholder="Confirm Password" name="cpassword" required>
+                    {% if error %}
+                    <p>{{ error }}</p>
+                    {% endif %}
+                    <hr class="w-75">
+                    <button type="submit" class="register btn btn-primary">Register</button>
+                </div>
+
+                <div class="container signin">
+                    <p>Already have an account? <a href="{% url 'Login' %}">login</a>.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

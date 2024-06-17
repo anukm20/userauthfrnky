@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% if user_details%}
+{% for i in user_details %}
+<img src="{{ i.image.url }}" width="250px" height="250px" alt="">
+<h2>name:</h2>{{i.user}}
+<h2>phone:</h2>{{i.phone}}
+<h2>destination:</h2>{{i.destination}}
+<h2>experience:</h2>{{i.experience}}
+{% endfor %}
+{% else %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Profile User:</label>
+    <input type="text" name="user" value={{user}}>
+    <br>
+    Image :
+    <input type="file" name="image" id="image">
+    <br>
+    <label for="phonenumber">Phone Number:</label>
+    <input type="text" name="phone" id="phonenumber">
+    <br>
+    <label for="destination">destination:</label>
+    <input type="text" name="destination" id="destination">
+    <br>
+    <label for="experience">experience:</label>
+    <input type="number" name="experience" id="experience">
+    <br>
+    <button type="submit">Save</button>
+</form>
+{% endif %}
+{% endblock %}

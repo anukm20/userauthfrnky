@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1>details successfully completed</h1>
+{% else %}
+<h1>empty details.please register.</h1>
+{% endif %}
+           
+{% endblock %}
